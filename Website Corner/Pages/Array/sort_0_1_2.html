@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">Sorting</a></li>
+          <li class="breadcrumb-item active">Sort an array of 0s, 1s and 2s</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Sort an array of 0s, 1s and 2s</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Adobe-orange" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Amazon-blue" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Hike-green"height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-MakeMyTrip -violet" height="35">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-MAQ Software -red" height="35">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Microsoft-brightgreen" height="35">
+    <img src="https://img.shields.io/badge/-Morgan Stanley-yellow" height="35">
+    <img src="https://img.shields.io/badge/-Ola Cabs -green" height="35">
+    <img src="https://img.shields.io/badge/-OYO Rooms-brown" height="35">
+    <img src="https://img.shields.io/badge/-Paytm -aqua" height="35">
+    <img src="https://img.shields.io/badge/-Qualcomm -brightgreen" height="35">
+    <img src="https://img.shields.io/badge/-Samsung -orange" height="35">
+    <img src="https://img.shields.io/badge/-SAP labs-blue" height="35">
+    <img src="https://img.shields.io/badge/-Snapdeal-violet" height="35">
+    <img src="https://img.shields.io/badge/-Walmart-red" height="35">
+    <img src="https://img.shields.io/badge/-Yatra.com-olive" height="35">
+  </a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                         
+                        An array of size N containing 0s, 1s, and 2s is given. Sort the array in ascending order.<br /><br />
+
+                        <b>Input Format</b><br />
+            
+                        arr1 = [2,1,1,0,0,2,1,0,2] <br>
+                        n=9 <br /><br />
+
+                        <b>Output Format</b><br />
+                           [0,0,0,1,1,1,2,2,2]
+                         
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach : </b>
+                          <p>
+                            Count the number of 0s , 1s , 2s in the array .<br>
+                            Store all the 0s from the beginning , next store all 1s and then store all the 2s at the end.<br>
+<br>  
+                          </p>
+                          <h6>Python Code</h6>
+                          <pre><code class="language-python">
+# Function to sort the array of 0s, 1s and 2s 
+def sortArr(arr, n): 
+  c0,c1,c2 = 0,0,0
+  # Count the number of 0s, 1s and 2s in the array 
+    for i in range(n): 
+      if arr[i] == 0: 
+        c0+=1
+          
+      elif arr[i] == 1: 
+        c1+=1
+              
+      elif arr[i] == 2: 
+        c2+=1
+      
+      # Update the array 
+      i = 0
+      
+      # Store the 0s in the beginning 
+      while (c0 > 0): 
+        arr[i] = 0
+        i+=1
+        c0-=1
+      
+    # store all the 1s 
+    while (c1 > 0): 
+        arr[i] = 1
+        i+=1
+        c1-=1
+      
+    # store all the 2s 
+    while (c2 > 0): 
+        arr[i] = 2
+        i+=1
+        c2-=1
+      
+    return arr
+  
+  
+# Driver's code 
+  
+arr = [0,1,2,0,1,1,0,0,2,1,0,2] 
+n = len(arr) 
+  
+print(sortArr(arr, n)) 
+                          </code></pre>
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+If: The list contains one or fewer elements, return the same list.
+Else: Divide the list into halves using the splitting function.
+Sort the two halves of the list.
+Merge the sorted lists.

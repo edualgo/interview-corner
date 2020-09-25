@@ -1,0 +1,7 @@
+create a temp_result arrray and append the values in it if the letter is uppercase
+check if the given pattern is in temp_result and the first letter and last letter in pattern is same as first and last letter in temp_result
+if all these conditions are satisfied then append temp_result to dictAns
+check the count
+if zero then print no match found
+else result is equal to dictAns[pattern]
+sort result print the answer

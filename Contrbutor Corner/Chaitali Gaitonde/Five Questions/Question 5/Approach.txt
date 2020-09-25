@@ -1,0 +1,7 @@
+Sort the given array
+then use the left and right pointers
+sum of the left and right element of array
+check if the sum is less then absolute value of previous sum
+update the previous sum
+if sum is less than zero the increase left pointer by one
+else decrease right point by one

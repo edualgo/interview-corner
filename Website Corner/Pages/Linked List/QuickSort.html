@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">Singly Linked List</a></li>
+          <li class="breadcrumb-item active"> Quick Sort on Linked List </li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Quick Sort on Linked List</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Paytm-orange" height="45">&nbsp;&nbsp;
+    </a>
+
+    
+     
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>  Sort the given Linked List using Quick Sort. 
+
+                            Input:<br>
+                             A method takes 1 argument: address of the head of the linked list. 
+                             The struct Node has a data part which stores the data and a next pointer which points to the next element of the linked list.
+                             There are multiple test cases. For each test case, this method will be called individually.
+                         
+                            Output:<br>
+                            Set *link to head of resultant linked list.
+                         
+                                    
+                                   
+<b>Input Format</b><br />
+            
+[10 -> 7 -> 11-> 12-> 6]<br /><br />
+
+<b>Output Format</b><br />
+[ 6 -> 7 -> 10-> 11-> 12]<br> <br>
+
+
+                        
+            </div>
+          </div>
+          
+              
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach:</b>
+                          <p>
+                            1. A temporary variable Pivot will store the element of the very first node  <br>
+                            2. Traverse the loop through the list and store the values to the **left side**  of the &nbsp;pivot value which are less than pivot <br>
+                            3. Store the values to the right side of the pivot value which are greater than pivot   <br>
+                            4. Now the value of pivot is located to it desired position  <br>
+                            5. Store the value of the pivot  <br>
+                            6. Now, sort the elements before the pivot value and after the pivot value in the same &nbsp;manner as done before by calling the functions. <br>
+                            7. Finally print the sorted list  <br>
+  
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python">
+# check if the list contains 1 or more nodes
+def getLink(head):
+  temp = head
+  while temp is not None and temp.next is not None:
+    temp = temp.next
+  return temp
+                        
+#initialize the pivot ,newHead and newLink to the partition function
+def quickSortRec(head, link):
+  if head is None or head == link:
+    return head
+  newHead = None 
+  newLink = None
+  pivot, newHead, newLink = partition(head, link, newHead, newLink)
+  if newHead != pivot:
+    temp = newHead
+    while temp.next != pivot:
+      temp = temp.next
+    temp.next = None
+    newHead = quickSortRec(newHead, temp)
+    temp = getLink(newHead)
+    temp.next = pivot
+  pivot.next = quickSortRec(pivot.next, newLink)  
+  return newHead
+#divide the entire list into two parts
+#where the left of the pivot value will have the values less than pivot
+# and right of the pivot value will have the vlaues greater than pivot 
+def partition(head, Link, newHead, newLink):
+  pivot = Link
+  prev = None
+  curr = head
+  end = pivot
+  while curr is not pivot:
+    if curr.data < pivot.data:
+      if newHead is None:
+        newHead = curr
+      prev = curr
+      curr = curr.next
+    else:
+      if prev:
+        prev.next = curr.next
+      temp = curr.next
+      curr.next = None
+      end.next = curr
+      end = curr
+      curr = temp
+  if newHead is None:
+    newHead = pivot
+  newLink = end
+  return pivot, newHead, newLink
+                        
+  #Driver's code
+                        
+  from collections import defaultdict
+  class Node:
+    def __init__(self,data):
+      self.data=data
+      self.next=None
+                        
+  class Llist:
+    def __init__(self):
+      self.head=None
+                            
+    def insert(self,data,tail):
+      node=Node(data)
+                                
+      if not self.head:
+        self.head=node
+        return node
+                                
+      tail.next=node
+      return node
+                                
+    def nodeID(head,dic):
+      while head:
+        dic[head.data].append(id(head))
+        head=head.next
+                                
+                        
+                        
+    def printList(head,dic):
+      while head:
+        if id(head) not in dic[head.data]:
+          print("Do'nt swap data, swap pointer/node")
+          return
+        print(head.data,end=' ')
+        head=head.next
+                                
+    if __name__ == '__main__':
+      t=int(input())
+                            
+      for i in range(t):
+        n=int(input())
+                                
+        arr=[int(x) for x in input().split()]
+                                
+        ll=Llist()
+        tail=None
+                                
+        for nodeData in arr:
+          tail=ll.insert(nodeData,tail)
+                                    
+        dic=defaultdict(list) # dictonary to keep data and id of node
+        nodeID(ll.head,dic)   # putting data and its id
+                                
+        resHead=quickSortRec(ll.head)
+        printList(resHead,dic)  #verifying and printing
+        print()
+</code></pre><br /><br />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>
+

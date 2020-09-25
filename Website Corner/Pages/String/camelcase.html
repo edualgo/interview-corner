@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="string.html">String Algorithms</a></li>
+          <li class="breadcrumb-item active">CamelCase Pattern Matching</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>CamelCase Pattern Matching</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-OLA Cabs-orange" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-brightgreen" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>Given a dictionary of words where each word follows CamelCase notation, print all words in the dictionary that match with a given pattern consisting of uppercase characters only.
+
+                            CamelCase is the practice of writing compound words or phrases such that each word or abbreviation begins with a capital letter.
+                            
+                            Example - AlgorithmicTreasure.</p><br /><br />
+
+                          <u>Example 1</u>:<br /><br />
+
+                          Input:<br />
+                          2<br />
+                          8<br />
+                          Hi Hello HelloWorld HiTech HiGeek HiTechWorld HiTechCity HiTechLab<br />
+                          HA<br />
+                          3<br />
+                          Welcome WelcomeToAlgorithmicTreasure AlgorithmicTreasure<br />
+                          WTAT<br /><br />
+                          Output:<br />
+                          No match found<br />
+                          WelcomeToAlgorithmicTreasure<br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Method:</b>
+                          <p>
+                          <ul>
+                            <li>
+                                Create a temp_result arrray and append the values in it if the letter is uppercase.
+                            </li>
+                            <li>
+                                Check if the given pattern is in temp_result and the first letter and last letter in pattern is same as first and last letter in temp_result.
+                            </li>
+                            <li>
+                                If all these conditions are satisfied then append temp_result to dictAns.
+                            </li>
+                            <li>
+                                Then check the count.
+                            </li>
+                            <li>
+                                If the count is zero then print no match found.
+                            </li>
+                            <li>
+                                Otherwise result is equal to dictAns[pattern].
+                            </li>
+                            <li>
+                                Sort the result, print the answer.
+                            </li>
+                          </ul>
+                          </p>
+                          <h6>Python Code</h6>
+                          <pre><code class="language-python">                              
+from collections import defaultdict
+test=int(input())
+for i in range(test):
+    numWords= int(input())
+    vectStr =input().split()
+    pattern=input()
+    count =0
+    answer =[]
+    dictAns= defaultdict(list)
+    for j in vectStr:
+        temp_result = "".join([c for c in j if(c.isupper())])
+        if((pattern in temp_result) and (pattern[0]==temp_result[0]) and (pattern[-1]==temp_result[len(pattern)-1])):
+            dictAns[pattern].append([temp_result,j])
+            count=1
+    if(count==0):
+        print("No match found")
+    else:
+        result = dictAns[pattern]
+        result.sort(key=lambda x:x[0])
+        answer = [i[1] for i in result]
+        print(" ".join(answer))
+
+        
+                            
+</code></pre>
+
+                        </div>
+                      </div>
+                    </div>
+                    
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>. Package Designed by <a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a> for python enthusiasts
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

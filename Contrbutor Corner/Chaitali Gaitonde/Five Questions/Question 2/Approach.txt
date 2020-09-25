@@ -1,0 +1,8 @@
+check if the letter in string1 is present in string2
+if not then append that letter in uncommon1 array
+check if the letter in string2 is present in string1
+if not then append that letter in uncommon2 array
+uncommon array is the result of concatenation of uncommon1 array and uncommon2 array
+if length of uncommon array is zero than
+print-1
+else print the uncommon array as a string using join

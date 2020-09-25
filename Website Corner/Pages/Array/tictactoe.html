@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
+          <li class="breadcrumb-item active">Tic-Tac-Toe</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Tic-Tac-Toe</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 8th Sept, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Amazon-orange" height="45">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Flipkart-blue" height="45">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Microsoft-pink" height="45">
+	&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Geeks For Geeks-green" height="35">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-red" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statement</h4>
+                        <p>A Tic-Tac-Toe board is given after some moves are played.
+						Find out if the given board is valid, i.e., is it possible
+						to reach this board position after some moves or not. <br />
+						Note that every arbitrary filled grid of 9 spaces isn’t valid
+						e.g. a grid filled with 3 X and 6 O isn’t valid situation because
+						each player needs to take alternate turns.<br />
+						Note :  The game starts with X<br /><br />
+
+                         <u>Example 1</u>:<br /><br />
+
+                        2<br />
+						X X O O X O O O O <br />
+						X X O O O X X O X<br /><br />
+						>> Invalid<br />
+						>> Valid<br /><br />
+						<u>Example 2</u>:<br /><br />
+
+                        1<br />
+						O X X X O X O O X<br /><br />
+						>> Invalid<br />
+						>> Valid<br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach:</b>
+                          <p>
+                            In this problem we check the validity of the given inputs
+							of a tic-tac-toe game. The game involves two players 'X'
+							and 'O' who take turns marking the spaces in a 3×3 grid.
+							There are 8 strategies in order to win this game.<br />
+							Consider player 'X', if 'X' occupies one of the row or
+							one of the column or occupies the diagonals of grid then
+							'X' wins. If 'X' wins then the game ends which also applies
+							to 'O'.<br /><br />
+							CONDITIONS TO CHECK IF INPUTS ARE INVALID:<br />
+							<ul>
+								<li>If both player 'X' and 'O' wins</li>
+								<li>When 'O' takes a chance after 'X' wins or vice versa</li>
+								<li>When number of 'X' exceed number of 'O' by two or more</li>
+								<li>When number of 'O's are greater than 'X'</li>
+							</ul><br />
+
+							CHECKING THE VALIDITY:<br />
+							<ul>
+								<li>Number of 'X' exceeds number of 'O' if 'X' wins.</li>
+								<li>Number of 'X' and 'O' equal only if 'O' wins.</li>
+								<li>Number of 'X' exceed number of 'O' by 1 not greater than that.</li>
+							</ul><br />
+							POSSIBILITIES OF WINNING A GAME:<br />
+							<ul>
+								<li>'X' occupies one of the row or 'O' occupies one of the row.</li>
+								<li>'X' occupies one of the column or 'O' occupies one of the column.</li>
+								<li>'X' occupies one of the diagonals in the grid or 'O' occupies one of the diagonals in the grid.</li>
+							</ul>
+							<img width="35%" height="40%" style="margin:0 auto; display:block;" src="http://d1hyf4ir1gqw6c.cloudfront.net/wp-content/uploads/tictactoe.png"><br />
+Complexity Analysis : <br />
+<ul>
+	<li>Time Complexity- O(n^2)</li>
+	<li>Space Complexity- O(n)</li>
+</ul><br />
+
+Pseudocode  :<br />
+PROGRAM ticTacToe<br />
+	// Possibilities() is a function to represent possible ways of winnning<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INPUT: Read T, a<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SET countX = 0<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SET countY = 0<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FOR each element in a<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF element = 0 THEN<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INCREMENT countX<br></br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; INCREMENT countO<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END IF<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF countO > countX or countX > countO + 1 THEN<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT Invalid<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE IF Possibilities(a, 'X') and Possibilities(a, 'O') THEN<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT Invalid<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE IF Possibilities(a, 'O') THEN<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IF countX == countO THEN<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PRINT Valid<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ELSE<br>
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Invalid.<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE IF countO + 1 == countX or self.Possibilities(a, 'X') THEN<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Valid<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ELSE <br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PRINT Invalid<br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END IF<br>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END FOR<br>
+END<br />
+<br / />
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python">class ticTacToe:
+
+    def Possibilities(self, a, b):
+
+        return ((a[0] == b and a[1] == b and a[2] == a[0]) or
+            (a[3] == b and a[4] == b and a[5] == b) or
+            (a[6] == b and a[7] == b and a[8] == b) or
+            (a[0] == b and a[3] == b and a[6] == b) or
+            (a[1] == b and a[4] == b and a[7] == b) or
+            (a[2] == b and a[5] == b and a[8] == b) or
+            (a[0] == b and a[4] == b and a[8] == b) or
+            (a[2] == b and a[4] == b and a[6] == b))
+
+    def validity(self, T):
+        if 1 <= T <= 100:
+            for i in range(T):
+                countX = 0
+                countO = 0
+                a = input().split()
+                for t in a:
+                    if t == 'X':
+                        countX += 1
+                    else:
+                        countO += 1
+                if countO > (countX) or (countX > countO + 1) :
+                    print("Invalid")
+                elif self.Possibilities(a, 'X') and self.Possibilities(a, 'O'):
+                    print("Invalid")
+                elif self.Possibilities(a, 'O'):
+                    if countX == countO:
+                        print('Valid')
+                    else:
+                        print("Invalid")
+                elif countO + 1 == countX or self.Possibilities(a, 'X'):
+                    print("Valid")
+                else:
+                    print("Invalid")
+
+chec = ticTacToe()
+chec.validity(int(input()))</code></pre><br /><br /><br />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

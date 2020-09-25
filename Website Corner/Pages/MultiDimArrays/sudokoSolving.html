@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="multiArray.html">Two Dimensional Array</a></li>
+          <li class="breadcrumb-item active">Is Sudoku Valid</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Is Sudoku Valid</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 8th Sept, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Amazon-orange" height="45">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Google-pink" height="45">
+	&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Interview Bit-green" height="35">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-red" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statement</h4>
+                        <p>Given an incomplete Sudoku configuration in terms of a 9x9  2-D square matrix (mat[][])
+						the task to check if the configuration has a solution or not.
+						Note: an incomplete Sudoku state - that is a 0 represents empty block.<br /><br />
+
+                         <u>Example 1</u>:<br /><br />
+
+                        1<br />
+						3 0 6 5 0 8 4 0 0 <br />
+						5 2 0 0 0 0 0 0 0 <br/>
+						0 8 7 0 0 0 0 3 1 <br />
+ 						0 0 3 0 1 0 0 8 0 <br />
+						9 0 0 8 6 3 0 0 5 <br />
+						0 5 0 0 9 0 6 0 0 <br />
+						1 3 0 0 0 0 2 5 0 <br />
+						0 0 0 0 0 0 0 7 4 <br />
+						0 0 5 2 0 6 3 0 0<br /><br />
+						>> 1<br /><br />
+						<u>Example 2</u>:<br /><br />
+
+                        1<br />
+						3 6 7 5 3 5 6 2 9 <br />
+						1 2 7 0 9 3 6 0 6 <br />
+						2 6 1 8 7 9 2 0 2 <br />
+						3 7 5 9 2 2 8 9 7 <br />
+						3 6 1 2 9 3 1 9 4 <br />
+						7 8 4 5 0 3 6 1 0 <br />
+						6 3 2 0 6 1 5 5 4 <br />
+						7 6 5 6 9 3 7 4 5 <br />
+						2 5 4 7 4 4 3 0 7 <br /><br />
+						>> 0<br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach:</b>
+                          <p>
+                            The above problem takes input T, mat indicating testcases and list
+							of numbers  ranging from 0 to 9 in 1D array. This matrix is converted
+							into 2D matrix ,i.e, 9x9 matrix and stored in variable array. Each element
+							in the matrix has its own position i denoting position of the element
+							in row and j denoting the position of the element in column. The output
+							can be obtained by looping through the entire elements in the matrix array.<br><br /><br />
+							CONDITIONS FOR SUDOKU CONFIGURATION TO BE INVALID : <br>
+							Consider if array[1][2] = 4 then<br>
+							<ul>
+								<li>If element 4 is present in same row of index 1 </li>
+								<li>If element 4 is present in same column of index 2</li>
+								<li>If element 4 is present twice in the same box</li>
+								<li>If the sum on each row equals 45</li>
+								<li>If the sum on each column equals 45</li>
+								<li>If the sum on each box equals 45</li>
+							</ul><br />
+Complexity Analysis : <br />
+<ul>
+	<li>Time Complexity- O(n^2)</li>
+	<li>Space Complexity- O(n^2)</li>
+</ul>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python">class Sudoku:
+
+    # method used to check validity of the inputs in sudoku
+    def solution(self):
+        T = int(input())
+        for i in range(T):
+            mat = [x for x in input().replace("0",".").split()]
+            array = []
+            for i in range(0,81,9):
+                array.append(mat[i:i+9])
+                row = [set() for _ in range(0,9)]
+                col = [set() for _ in range(0,9)]
+                box = [set() for _ in range(0,9)]
+                flag = True
+            for i in range(0,9):
+                for j in range(0,9):
+                    num = array[i][j]
+                    if num == ".":
+                        continue
+                    if num in row[i] or num in col[j] or num in box[(i//3)*3 + j // 3]:
+                        flag = False
+                        break
+                    row[i].add(num)
+                    col[j].add(num)
+                    box[i//3*3 + j // 3].add(num)
+            if flag:
+                print(1)
+            else:
+                print(0)
+a = Sudoku()
+a.solution()</code></pre><br /><br /><br />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

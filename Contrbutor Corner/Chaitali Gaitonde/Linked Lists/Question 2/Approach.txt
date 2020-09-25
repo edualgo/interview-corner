@@ -1,0 +1,4 @@
+Store head of the linked list. 
+Traverse it. 
+If reach NULL, linked list is not circular.
+If reach head again, linked list is circular.

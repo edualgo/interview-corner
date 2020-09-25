@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
+          <li class="breadcrumb-item active">Median Of Sorted Arrays</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Median of Two Sorted Arrays</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Google-orange" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Amazon-blue" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-PayTm-green"
+      height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Leetcode-violet" height="35">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-CPP-red" height="35">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-brightgreen" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>There are two sorted arrays <b>num1</b> and <b>num2</b> of size m and n respectively.
+
+                          Find the median of the two sorted arrays. The overall run time complexity should be <b>O(log (m+n))</b>.
+                          You may assume <b>num1</b> and <b>num2</b> cannot be both empty.<br /><br />
+
+                          <u>Example 1</u>:<br /><br />
+
+                          nums1 = [1, 3]<br />
+                          nums2 = [2]<br /><br />
+
+                          >> The median is 2.0<br /><br />
+
+                          <u>Example 2</u>:<br /><br />
+
+                          nums1 = [1, 2]<br />
+                          nums2 = [3, 4]<br /><br />
+
+                          >> The median is (2 + 3)/2 = 2.5<br /><br /></p>
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Method - 1:</b>
+                          <p>
+                          <ul>
+                            <li>
+                              Create an array named final_num, that will hold the sorted value (space complexity O(m+n), where m is the size of num1 and n is the size of num2)
+                            </li>
+                            <li>
+                              Take two iterator variable i and j to iterate over two arrays num1 and num2 respectively.
+                            </li>
+                            <li>
+                              During each iterattions find the lowest value and place that in the array (Worst case Time complexity- O(m+n), Average Case Time Complexity - O(n), Hence the total time complexity is O(n))
+                            </li>
+                            <li>
+                              It is possible that one array is of small size and other one is of large size, hence need two more loops.
+                            </li>
+                            <li>
+                              Finally find the median.
+                            </li>
+                          </ul>
+                          </p>
+                          <h6>C++ Code</h6>
+                          <pre><code class="language-cpp">/// Finding median using normal loop and merge sorted arrays algorithm
+double findMedian(vector&lt;int>& num1,vector&lt;int>& num2)
+{
+   vector&lt;int> final_num;
+   int i=0,j=0;
+   int num1_size = num1.size(),num2_size = num2.size();
+
+   /// Merging the two sorted arrays
+   while(i&lt;num1_size && j&lt;num2_size)
+   {
+       if(num1.at(i) &lt; num2.at(j))
+       {
+           final_num.push_back(num1.at(i));
+           i++;
+       }
+       else
+       {
+           final_num.push_back(num2.at(j));
+           j++;
+       }
+   }
+   while(j&lt;num2_size)
+   {
+       final_num.push_back(num2.at(j));
+       j++;
+   }
+   while(i&lt;num1_size)
+   {
+       final_num.push_back(num1.at(i));
+       i++;
+   }
+
+   /// Finding the median
+   double median;
+   int final_size = final_num.size();
+   if(final_size%2==0)
+   {
+       median = (final_num.at(final_size/2) + final_num.at((final_size/2)-1))/2.0;
+   }
+   else
+   {
+       median = (final_num.at(final_size/2))*1.0;
+   }
+   return median;
+}</code></pre>
+                          <!-- <pre><code class="language-python">Output:
+
+Bubble Sort Runtime = 0.0
+[1, 2, 3, 4, 5]</code>
+</pre> -->
+                        </div>
+                      </div>
+                    </div>
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python"># method to get the median using merge two sorted array algorithm
+def findMedian(self,num1,num2):
+    final_num = []
+    i = 0
+    j = 0
+    num1_size = len(num1)
+    num2_size = len(num2)
+
+    # merging to sorted arrays
+    while(i < num1_size and j < num2_size):
+        if(num1[i] < num2[j]):
+            final_num.append(num1[i])
+            i+=1
+        else:
+            final_num.append(num2[j])
+            j+=1
+
+    while(j < num2_size):
+        final_num.append(num2[j])
+        j+=1
+
+    while(i < num1_size):
+        final_num.append(num1[i])
+        i+=1
+
+    # computing the median
+    final_size = len(final_num)
+    if(final_size%2==0):
+        median = (final_num[int(final_size/2)]+final_num[int(final_size/2)-1])/2
+    else:
+        median = final_num[int(final_size/2)]
+    return median</code></pre><br /><br />
+
+                    <b>Method - 2:</b>
+                    <p>
+                    <ul>
+                      <li>
+                        Append all the elements of num2 to num1, Space Complexity = O(n), Time complexity = O(n) where n is the size of num2
+                      </li>
+                      <li>
+                        sort num1, using the built-in-sort, Time complexity, O(logn) which is less than O(n) in the above point.
+                      </li>
+                      <li>
+                        find median using the normal method
+                      </li>
+                      <li>
+                        return the median
+                      </li>
+                    </ul>
+                    </p>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <h6>C++ Code</h6>
+                          <pre><code class="language-python">/// Optimized solution using built-in sort
+double findMedian_optimized(vector&lt;int>& num1,vector&lt;int>& num2)
+{
+    double median;
+    int num2_size = num2.size();
+
+    /// appending all array elements to one single array
+    for(int i=0;i&lt;num2_size;i++)
+    {
+        num1.push_back(num2.at(i));
+    }
+
+    /// sorting the array elements
+    sort(num1.begin(),num1.end());
+    int num1_size = num1.size();
+
+    /// Finding the median of the array
+    if(num1_size%2==0)
+    {
+        median = (num1.at(num1_size/2-1)+num1.at(num1_size/2))/2.0;
+    }
+    else
+    {
+        median = double(num1.at(num1_size/2));
+    }
+    return median;
+}</code></pre><br />
+                <h6>Python Code</h6>
+                <pre><code class="language-python"># method to get the median using an optimized method
+def findMedian_optimized(self,num1,num2):
+    num2_size = len(num2)
+
+    # appending both arrays into one
+    for i in range(num2_size):
+        num1.append(num2[i])
+
+    # sorting the appended array
+    num1.sort()
+
+    # computing the median
+    final_size = len(num1)
+
+    if(final_size%2==0):
+        median = (num1[int(final_size/2)]+num1[int(final_size/2)-1])/2
+    else:
+        median = num1[int(final_size/2)]
+    return float(median)</code></pre>
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+ check if the absolute value of array element is greater than zero
+ for repeating value if yes then the absolute value of element of array minus one element of array will be negative
+ else print the absolute value of the element of array
+ for missing value itirate through array if element of array is greater than zero then print index plus one

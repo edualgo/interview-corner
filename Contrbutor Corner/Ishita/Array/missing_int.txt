@@ -1,0 +1,27 @@
+DOCUMENTATION
+
+Question link :https://www.interviewbit.com/problems/first-missing-integer/
+Asked in : Model N , InMobi , Amazon
+
+Problem :Given an unsorted integer array, find the first missing positive integer.
+Example:
+Given [1,2,0] return 3,
+[3,4,-1,1] return 2,
+[-8, -7, -6] returns 1
+Your algorithm should run in O(n) time and use constant space
+
+Optimised Approach - Sort the vector array and take a key variable as 1.If the array element is greater than key then the first missing positive integer is key and if the the array element is equal to key then increment the key by 1 and find the first missing positive integer.
+
+Time and Space Complexity : 
+
+Time - O(n)
+Space - O(n)
+
+Pseudocode  :
+	sort(a)
+	for(i=0 to n)
+		if(a[i]>0)
+			if(a[i]>key)
+				key
+			else if(a[i]==key)
+				key++

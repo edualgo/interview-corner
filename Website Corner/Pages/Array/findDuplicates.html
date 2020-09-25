@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Open+Sans:wght@300;400&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Montserrat', 'Roboto Mono', monospace;
+    }
+  </style>
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
+          <li class="breadcrumb-item active">Find Duplicate in Array</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Find Duplicate in Array</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 6th Sep, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+                  <p>
+                    <a><img src="https://img.shields.io/badge/-VMWare-222?style=flat-square&logo=VMware" height="35">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Amazon-222?style=flat-square&logo=Amazon" height="35">&nbsp;&nbsp;<img
+                        src="https://img.shields.io/badge/-Riverbed-222?style=flat-square&logo=riverbed" height="35">
+                      &nbsp;&nbsp;<img src="https://img.shields.io/badge/Language-C++-blue?style=flat-square" height="35">&nbsp;&nbsp;</a>
+                  </p>
+                  <div class="callout-block callout-success">
+                    <div class="icon-holder">
+                      <i class="fas fa-question"></i>
+                    </div>
+                    <div class="content">
+                      <h4 class="callout-title">Problem Statment</h4>
+                      <p>
+                        Given a read only array of n + 1 integers between 1 and n, find one number that repeats in linear time using less than <b>O(n)</b> space and traversing the stream sequentially <b>O(1)</b> times
+                        <u>Example 1</u>:<br /><br />
+
+                        Given
+                      <pre><code class="language-cpp">[3, 4, 1, 4, 1]</code></pre>
+                      <br /><br />
+
+                      <b>Note:</b>
+                      <ul>
+                        <li>If there are multiple possible answers (like in the sample case above), output any one.</li>
+
+                        <li>If there is no duplicate, output "-1".</li>
+                      </ul>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="code-block">
+                    <div id="python" class="section-block">
+                      <div class="code-block">
+                        <h3>Naive Approach:</h3>
+                        <p>
+                          A naive approach could be to count all elements and store them in an array, and when we encounter any element which is occurring more than one then we return it.<br />
+                          This solution takes <b>O(n)</b> time and <b>O(n)</b> auxiliary space.
+                        </p>
+                        <h4>Pseudo Code</h4>
+                        <p>
+                          This Program returns duplicate element in an array<br />
+                          <br />
+                          function repeatedNumber ( Arguement givenArray ){<br /><br />
+                          &nbsp;&nbsp;&nbsp;Define an array "count" of size (givenArray - 1)<br />
+                          &nbsp;&nbsp;&nbsp;Initialize all elements of count with 0<br />
+
+                          &nbsp;&nbsp;&nbsp;traverse the givenArray and increase the count of elements<br />&nbsp;&nbsp;&nbsp;of givenArray corresponding to that index number in count array<br />
+
+                          &nbsp;&nbsp;&nbsp;If(count[iterator] &gt; 1){<br />
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return count[iterator]<br />
+                          &nbsp;&nbsp;&nbsp;}<br />
+                          &nbsp;&nbsp;&nbsp;return -1<br />
+                          }
+                        </p>
+                        <h5>C++ Function Implementation</h5>
+                        <pre><code class="language-cpp">int repeatedNumber(const vector&lt;int&gt; &A) {
+&nbsp;&nbsp;vector&lt;int&gt; count(A.size()-1, 0);
+&nbsp;&nbsp;for(int i = 0 ; i &lt; A.size() ; i++){
+&nbsp;&nbsp;&nbsp;&nbsp;count[A[i]-1]++;
+&nbsp;&nbsp;&nbsp;&nbsp;if(ret[ A[i] - 1 ] &gt; 1) return A[i];
+&nbsp;&nbsp;}
+&nbsp;&nbsp;return -1;
+}</code></pre><br>
+                        <h4>Optimised Approach</h4>
+                        <p>
+                          <b>Approach uses Floyd's Tortoise and Hare Algorithm</b><br />
+                        <ul>
+                          <li>Form following nested sequence using function "f(x) = A[x]" starting with index "x = 0"
+                            <pre><code class="language-cpp">A[0], A[A[0]], A[A[A[0]]], A[A[A[A[0]]]],. . . . . . . .</code></pre>
+                          </li>
+                          <li>Each member in the sequence is an element of A[]</li>
+                          <li>This sequence will form a cycle if there is a duplicate element in the array with duplicate element entry point to the cycle</li>
+                          <h6>Sample Array</h6>
+                          <img src="https://pixan198.github.io/images/array.svg" />
+                          <h6>Cycle Formed in Array</h6>
+                          <img src="https://pixan198.github.io/images/cycle.svg" />
+                          <li>traversal starts from "A[0] = 3" and it enters cycle through "A[3] = 4"</li>
+                          <li>The Algorithm has two traversal variables called Hare and Tortoise, Hare being fast and Tortoise slow
+                            <pre><code class="language-cpp">Hare = A[A[Hare]]
+Tortoise = A[Tortoise]</code></pre>
+                          </li>
+                          <li>Hare is fast so it enters the cycle first and Tortoise enters later</li>
+                          <li>Since, Hare is fast so it completes cycle before Tortoise and itersects with it at some point middle in array</li>
+                          <li>Now, move tortoise to the starting point of sequence and leave Hare within the cycle</li>
+                          <li>Both move with same speed i.e., "Hare = A[Hare]" and "Tortoise = A[Tortoise]"</li>
+                          <li>They will intersect at duplicate element</li>
+                          <li>Stop when they intersect and you have the duplicate element</li>
+                        </ul>
+                        </p>
+                        <h5>Pseudo Code</h5>
+                        <p>
+                          function repeatedNumber ( Arguement givenArray ){
+                        <ul type="none">
+                          <li>Initialize Tortoise and Hare Variables with first element of givenArray</li>
+                          <li>Loop until we find the intersection point of Hare and Tortoise</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;define speed of Hare and Tortoise</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;Hare = givenArray[givenArray[Hare]]</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;Tortoise = givenArray[Tortoise]</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;Exit Loop when Hare == Tortoise</li>
+                          <li>Move Tortoise to start of givenArray</li>
+                          <li>Loop until Tortoise is not equal to Hare</li>
+                          <li>&nbsp;&nbsp;&nbsp;&nbsp;Exit Loop when Tortoise == Hare</li>
+                          <li>return Tortoise</li>
+                        </ul>
+                        }
+                        </p>
+                        <h5>C++ Function Implementation</h5>
+                        <pre><code class="language-cpp">int repeatedNumberOptimized(int arr[]) {
+&nbsp;&nbsp;int Tortoise = arr[0];
+&nbsp;&nbsp;int Hare = arr[0];
+&nbsp;&nbsp;while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;Tortoise = arr[Tortoise];
+&nbsp;&nbsp;&nbsp;&nbsp;Hare = arr[arr[Hare]];
+&nbsp;&nbsp;&nbsp;&nbsp;if (Tortoise == Hare)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;Tortoise = arr[0];
+&nbsp;&nbsp;while (Tortoise != Hare) {
+&nbsp;&nbsp;&nbsp;&nbsp;Tortoise = arr[Tortoise];
+&nbsp;&nbsp;&nbsp;&nbsp;Hare = arr[Hare];
+&nbsp;&nbsp;}
+&nbsp;&nbsp;return Tortoise;
+}
+</code></pre><br>
+                        <h5>Program Code</h5>
+                        <pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;algorithm&gt;
+#include &lt;vector&gt;
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::vector;
+
+int repeatedNumber(const vector&lt;int&gt; &A) {
+&nbsp;&nbsp;vector&lt;int&gt; count(A.size()-1, 0);
+&nbsp;&nbsp;for(int i = 0 ; i &lt; A.size() ; i++){
+&nbsp;&nbsp;&nbsp;&nbsp;count[A[i]-1]++;
+&nbsp;&nbsp;&nbsp;&nbsp;if(ret[ A[i] - 1 ] &gt; 1) return A[i];
+&nbsp;&nbsp;}
+&nbsp;&nbsp;return -1;
+}
+
+int main(){
+
+&nbsp;&nbsp;int n, temp;
+&nbsp;&nbsp;vector&lt;int&gt; A;
+&nbsp;&nbsp;cin &gt;&gt; n;
+
+&nbsp;&nbsp;for( int i = 0; i &lt; n; i++ ){
+&nbsp;&nbsp;&nbsp;&nbsp;cin &gt;&gt; temp;
+&nbsp;&nbsp;&nbsp;&nbsp;A.push_back(temp);
+&nbsp;&nbsp;}
+
+&nbsp;&nbsp;cout &lt;&lt; repeatedNumber(A) &lt;&lt; endl;
+&nbsp;&nbsp;return 0;
+}
+
+</code></pre>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>. 
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

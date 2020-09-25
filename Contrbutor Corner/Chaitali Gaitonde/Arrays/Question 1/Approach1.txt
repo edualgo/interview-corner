@@ -1,0 +1,6 @@
+Update the Sum of Penalties of Even Car Numbers and Update the Sum of Odd Car Numbers.
+Check the Date:
+if its Odd:
+Print Sum of Penalties of Even Car Numbers
+else:
+Print Sum of Penalties of Odd Car Numbers

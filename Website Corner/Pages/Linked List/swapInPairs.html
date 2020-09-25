@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="linkedlist.html">Linked List</a></li>
+          <li class="breadcrumb-item active">Swap In Pairs</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Swap In Pairs</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 8th Sept, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Amazon-orange" height="45">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Microsoft-pink" height="45">
+	&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Geeks For Geeks-green" height="35">
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-red" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statement</h4>
+                        <p>Given a linked list, swap every two adjacent nodes and return its head.<br /><br />
+
+                         <u>Example 1</u>:<br /><br />
+
+                        1 2 3 4<br /><br />
+						>> 2 1 4 3<br /><br />
+						<u>Example 2</u>:<br /><br />
+
+                        2 4 6 3 1 5<br /><br />
+						>> 4 2 3 6 5 1<br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach:</b>
+                          <p>
+                            Input contains a list of elements in a linked list and the expected output can be achieved by using a single linked list.
+							Firstly a class called Node is created, which represents a node of linked list with
+							variables next that acts as a pointer and data used to store elements in it.
+							The method rearrange is used to swap the adjacent nodes in following manner :<br />
+							<ul>
+								<li>If head or node pointed by head is none return head.</li>
+								<li>If head or node pointed by head is none set current node as head and consider 2 nodes at a time and swap their links.</li>
+							</ul><br />
+Complexity Analysis : <br />
+<ul>
+	<li>Time Complexity- O(n)</li>
+	<li>Space Complexity- O(n)</li>
+</ul>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python"># A linked list node
+class Node:
+    def __init__(self, data=None, next=None):
+        self.data = data
+        self.next = next
+
+
+# Helper function to print given linked list
+def printList(head):
+
+    ptr = head
+    while ptr:
+        print(ptr.data, end=" ")
+        ptr = ptr.next
+
+    print("")
+
+
+# Function to pairwise swap adjacent nodes of a linked list
+def rearrange(head):
+
+    # if list is empty or contains just one node
+    if head is None or head.next is None:
+        return head
+
+    curr = head
+    prev = None
+
+    # consider two nodes at a time and swap their links
+    while curr and curr.next:
+
+        temp = curr.next
+        curr.next = temp.next
+        temp.next = curr
+
+        if prev is None:
+            head = temp
+        else:
+            prev.next = temp
+
+        prev = curr
+        curr = curr.next
+
+    return head
+
+
+if __name__ == '__main__':
+
+    head = None
+    a = list(map(int, input().split()))
+    for i in reversed(a):
+        head = Node(i, head)
+    head = rearrange(head)
+    printList(head)</code></pre><br /><br /><br />
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

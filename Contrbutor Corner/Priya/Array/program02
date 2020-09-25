@@ -1,0 +1,31 @@
+def first_repeating(n,arr):
+    #initialize with the minimum index possible
+    Min = -1
+    #create a empty dictionary
+    newSet = dict()
+
+    # tranversing the array elments from end
+    for x in range(n - 1, -1, -1):
+        
+        #check if the element is already present in the dictionary
+        #then update min
+        if arr[x] in newSet.keys(): 
+            Min = x 
+        #if element is not present
+        #add element in the dictionary
+        else: 
+            newSet[arr[x]] = 1
+
+    #print the minimum index of repeating element
+    if (Min != -1): 
+        print("The first repeating element is",arr[Min]) 
+    else: 
+        print("There are no repeating elements") 
+
+#Drivers code
+
+arr = [10, 5, 3, 4, 3, 5, 6] 
+  
+n = len(arr) 
+print(first_repeating(n,arr)) 
+        

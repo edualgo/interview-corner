@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="binarytree.html">Binary Tree</a></li>
+          <li class="breadcrumb-item active">Binary Tree To DLL</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Binary Tree To DLL</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Microsoft-orange" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Amazon-blue" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Goldman Sachs-red" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Morgan Stanley-magenta" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-brightgreen" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>Given a Binary Tree (<b>BT</b>), convert it to a Doubly Linked List(<b>DLL</b>) In-Place. The left and right pointers in nodes are to be used as previous and next pointers respectively in converted DLL. The order of nodes in DLL must be same as Inorder of the given Binary Tree. The first node of Inorder traversal (leftmost node in BT) must be the head node of the DLL.</p><br /><br />
+
+                          <u>Example 1</u>:<br /><br />
+
+                          Input:<br />
+                          &nbsp;1<br />
+                              /&nbsp;\<br />
+                             3&nbsp;2<br /><br />
+                          Output:<br />
+                          3 1 2 <br />
+                          2 1 3 <br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Method:</b>
+                          <p>
+                          <ul>
+                            <li>
+                                Check if the right node is there if yes then assign function to convert the right node into DLL to the head.
+                            </li>
+                            <li>
+                                If its head the left node is root.
+                            </li>
+                            <li>
+                                And right node is head.
+                            </li>
+                            <li>
+                                If the root has left node then assign function to convert the left node into DLL to the head.
+                            </li>
+                            <li>
+                                Otherwise,head is the root.
+                            </li>
+                            <li>
+                                The function returns the head.
+                            </li>
+
+                          </ul>
+                          </p>
+                          <h6>Python Code</h6>
+                          <pre><code class="language-python">
+def bToDLL(root,head=None):
+
+    if root.right:
+        head = bToDLL(root.right, head)
+    if head:
+        head.left = root
+        root.right = head
+    if root.left:
+        head = bToDLL(root.left, root)
+    else:
+        head = root
+    return head
+
+   
+from collections import deque
+class Node:
+    """ Class Node """
+    def __init__(self, value):
+        self.left = None
+        self.data = value
+        self.right = None
+
+# Function to Build Tree
+def buildTree(s):
+    #Corner Case
+    if(len(s)==0 or s[0]=="N"):
+        return None
+
+    # Creating list of strings from input
+    # string after spliting by space
+    ip=list(map(str,s.split()))
+
+    # Create the root of the tree
+    root=Node(int(ip[0]))
+    size=0
+    q=deque()
+
+    # Push the root to the queue
+    q.append(root)
+    size=size+1
+
+    # Starting from the second element
+    i=1
+    while(size>0 and i<len(ip)):
+        # Get and remove the front of the queue
+        currNode=q[0]
+        q.popleft()
+        size=size-1
+
+        # Get the current node's value from the string
+        currVal=ip[i]
+
+        # If the left child is not null
+        if(currVal!="N"):
+
+            # Create the left child for the current node
+            currNode.left=Node(int(currVal))
+
+            # Push it to the queue
+            q.append(currNode.left)
+            size=size+1
+        # For the right child
+        i=i+1
+        if(i>=len(ip)):
+            break
+        currVal=ip[i]
+
+        # If the right child is not null
+        if(currVal!="N"):
+
+            # Create the right child for the current node
+            currNode.right=Node(int(currVal))
+
+            # Push it to the queue
+            q.append(currNode.right)
+            size=size+1
+        i=i+1
+    return root
+
+
+import sys
+def printDLL(head): #Print util function to print Linked List
+    prev = None
+    sys.stdout.flush()
+    while(head != None):
+        print(head.data, end=" ")
+        prev=head
+        head=head.right
+    print('')
+    while(prev != None):
+        print(prev.data, end=" ")
+        prev=prev.left
+    print('')
+
+if __name__=='__main__':
+    t=int(input())
+    for _ in range(0,t):
+        s=input()
+        root=buildTree(s)
+        head = bToDLL(root)
+        printDLL(head)
+
+</code></pre>
+
+                        </div>
+                      </div>
+                    </div>
+
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>. Package Designed by <a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a> for python enthusiasts
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

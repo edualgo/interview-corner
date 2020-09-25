@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
+          <li class="breadcrumb-item active"> Remove Duplicate Elements </li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Remove Duplicate Elements</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a><img src="https://img.shields.io/badge/-Morgan Stanley-orange" height="45">&nbsp;&nbsp;
+      <img src="https://img.shields.io/badge/-Samsung -green" height="45">&nbsp;&nbsp;
+      <img src="https://img.shields.io/badge/-Wipro-purple" height="45">&nbsp;&nbsp;
+      <img src="https://img.shields.io/badge/-Xome-red" height="45">&nbsp;&nbsp;
+      <img src="https://img.shields.io/badge/-Zoho-yellow" height="45">&nbsp;&nbsp;</a>
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>  A sorted array **arr**of size **n** is given . <br>
+                          Print the new array **arr[]** with no duplicate element.<br>
+
+                        <b>Constraints:</b>
+                          1 <= N <= 10^6
+                          0 <= A <= 10^6<br /><br />
+<p>
+<b>Input Format</b><br />
+            
+[1,2,2,4,5,5,6] <br /><br />
+
+<b>Output Format</b><br />
+[1,2,4,5,6]
+                        </p>
+                      </div>
+                    </div>
+
+              
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach:</b>
+                          <p>
+                            1. remove_duplicate - function is declared with two arguments( arr : a array which &nbsp;stores  the elements , n: size of the array) <br>
+                            &nbsp;the whole logic behind the program is that : <br>
+                            2. a loop will transverse through the array <br>
+                            3. if the current element  is not equal to the next element of the array then , store the &nbsp;element in a temporary list  <br>
+                            4. store the temporary assigned list to the original array and print the unique &nbsp;elements
+ 
+                          </p>
+                          <br>
+              
+                    <h6>Python Code</h6>
+                    <pre><code class="language-python">
+def remove_duplicate(n,arr):
+# the length of array should be gretaer than 1
+# else return n 
+    if n <= 1: 
+        return n 
+#temporary variable to store unique elements of the array  
+    temp = list(range(n))
+
+#transverse through the array 
+    y = 0; 
+    for x in range(0, n-1):
+
+#if the present element is not equal to the incremented element
+#then store the present element in temporary list and
+#increment the j value
+        if arr[x] != arr[x+1]: 
+            temp[y] = arr[x] 
+            y += 1
+#also store the last element,since it was not stored previously 
+    temp[y] = arr[n-1] 
+    y += 1
+#change the original array with unique elements and return j
+    for x in range(0, y): 
+        arr[x] = temp[x] 
+  
+    return y 
+
+#Drivers code
+
+arr = [1,2,2,4,5,7]
+n=len(arr)
+print(remove_duplicate(n,arr))
+
+</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

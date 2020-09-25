@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+    rel="stylesheet" type="text/css">
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Open+Sans:wght@300;400&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    h1,h2,h3,h4,h5,h6{
+      font-family: 'Montserrat','Roboto Mono', monospace;
+    }
+  </style>
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="linkedlist.html">Linked List</a></li>
+          <li class="breadcrumb-item active">Absolute List Sorting</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>&nbsp;Absolute List Sorting</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 6th Sep, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+                  <p>
+                    <a><img
+                        src="https://img.shields.io/badge/-Amazon-222?style=flat-square&logo=Amazon" height="35">&nbsp;&nbsp;<img
+                        src="https://img.shields.io/badge/-OYO-222?style=flat-square&logo=oyo" height="35">
+                      &nbsp;&nbsp;<img src="https://img.shields.io/badge/Language-C++-blue?style=flat-square" height="35">&nbsp;&nbsp;</a>
+                  </p>
+                  <div class="callout-block callout-success">
+                    <div class="icon-holder">
+                      <i class="fas fa-question"></i>
+                    </div>
+                    <div class="content">
+                      <h3 class="callout-title">Problem Statment</h3>
+                      <p>
+                        Given a linked list L of N nodes, sorted in ascending order based on the absolute values of its data. Sort the linked list according to the actual values.</p>
+                        <h4>Input</h4>
+<p>The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case consists of two lines. The first line of each test case contains a positive integer N denoting the size of linked list. The second line of each test case contains N space separated integers denoting the values of N nodes.</p>
+<h4>Output</h4>
+<p>
+        Corresponding to each test case, the expected output will be space separated values of the sorted linked list.
+</p>
+						<u>Example 1</u>:<br />
+
+                        <pre><code class="language-cpp">Input : [1] -&gt; [-2] -&gt; [-3] -&gt; [4] -&gt; [-5]
+Output: [-5] -&gt; [-3] -&gt; [-2] -&gt; [1] -&gt; [4]</code></pre>
+                        <br />
+
+
+                    </div>
+                  </div>
+                  <div class="code-block">
+                    <div id="python" class="section-block">
+                      <div class="code-block">
+                        <h3>Naive Approach:</h3>
+                        <p>
+                                A naive approach could be to sort the linked list using any sorting algorithm, for example: Insertion Sort, Selection Sort, Merge Sort,etc. By this method the best time complexity you can achieve is <b>O(nlogn)</b>.
+                        </p>
+                        <h4>Pseudo Code</h4>
+                        <p>
+                                MergeSort(headRef)
+                          <ul type="none">
+                                  <li>Check for HEAD if its NULL then return</li>
+                                  <li>Check if there is only one element in the Linked List then return
+                                </li>
+<li>Else divide the linked list into two halves</li>
+<li>Sort the two halves A and B</li>
+     <pre><code class="language-cpp">MergeSort(A);
+MergeSort(B);</code></pre>
+<li>Merge the sorted A and B and update the HEAD pointer</li>
+</ul>
+                        </p>
+                        <h5>C++ Function Implementation</h5>
+                        <pre><code class="language-cpp">Node* SortedMerge(Node* a, Node* b) {
+        Node* result = NULL;
+        if (a == NULL)
+                return (b);
+        else if (b == NULL)
+                return (a);
+        if (a-&gt;data &lt;= b-&gt;data) {
+                result = a;
+                result-&gt;next = SortedMerge(a-&gt;next, b);
+        }
+        else {
+                result = b;
+                result-&gt;next = SortedMerge(a, b-&gt;next);
+        }
+        return (result);
+}
+void FrontBackSplit(Node* source, Node** frontRef, Node** backRef) {
+        Node* fast;
+        Node* slow;
+        slow = source;
+        fast = source-&gt;next;
+
+        while (fast != NULL) {
+                fast = fast-&gt;next;
+                if (fast != NULL) {
+                        slow = slow-&gt;next;
+                        fast = fast-&gt;next;
+                }
+        }
+
+        *frontRef = source;
+        *backRef = slow-&gt;next;
+        slow-&gt;next = NULL;
+}
+void MergeSort(Node** headRef) {
+        Node* head = *headRef;
+        Node* a;
+        Node* b;
+
+        if ((head == NULL) || (head-&gt;next == NULL)) {
+                return;
+        }
+
+        FrontBackSplit(head, &a, &b);
+
+        MergeSort(&a);
+        MergeSort(&b);
+
+        *headRef = SortedMerge(a, b);
+}</code></pre><br>
+<h4>Optimised Approach</h4>
+<p>
+  As you can see the sample I/O input list is sorted on absolute values but if you see closely all positive numbers are sorted in ascending order but negative numbers in descending order, we can take advantage of this fact.
+What we'll do is, we will traverse the LL and whenever we find a negative number or any number which is out of order, we will remove it from that position and insert it at the beginning of LL.
+</p>
+<h5>Pseudo Code</h5>
+<p>
+sortList(Node** head)
+<ul type="none">
+        <li>Define two variables prev and curr
+                <ul type="none"><li>set prev to head pointer and curr next to head pointer</li></ul>
+        </li>
+        <li>Traverse the list to the end
+                <ul type="none"><li>
+                        If( curr &lt; prev ) then remove curr from linked list and insert it at beginning
+                </li></ul>
+        </li>
+</ul>
+</p>
+<h5>C++ Function Implementation</h5>
+<pre><code class="language-cpp">void sortList(Node** head){
+    Node* prev = (*head);
+    Node* curr = (*head)-&gt;next;
+
+    while (curr != NULL) {
+
+        if (curr-&gt;data &lt; prev-&gt;data) {
+            prev-&gt;next = curr-&gt;next;
+
+            curr-&gt;next = (*head);
+            (*head) = curr;
+
+            curr = prev;
+        }
+        else{
+            prev = curr;
+        }
+
+        curr = curr-&gt;next;
+    }
+}
+</code></pre><br>
+<h5>Program Code</h5>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct Node
+{
+    Node* next;
+    int data;
+};
+// Optimised Approach
+void sortList(Node** head){
+        Node* prev = (*head);
+        Node* curr = (*head)-&gt;next;
+
+        while (curr != NULL) {
+
+            if (curr-&gt;data &lt; prev-&gt;data) {
+                prev-&gt;next = curr-&gt;next;
+
+                curr-&gt;next = (*head);
+                (*head) = curr;
+
+                curr = prev;
+            }
+            else{
+                prev = curr;
+            }
+
+            curr = curr-&gt;next;
+        }
+}
+//Naive Approach
+Node* SortedMerge(Node* a, Node* b) {
+        Node* result = NULL;
+        if (a == NULL)
+                return (b);
+        else if (b == NULL)
+                return (a);
+        if (a-&gt;data &lt;= b-&gt;data) {
+                result = a;
+                result-&gt;next = SortedMerge(a-&gt;next, b);
+        }
+        else {
+                result = b;
+                result-&gt;next = SortedMerge(a, b-&gt;next);
+        }
+        return (result);
+}
+void FrontBackSplit(Node* source, Node** frontRef, Node** backRef) {
+        Node* fast;
+        Node* slow;
+        slow = source;
+        fast = source-&gt;next;
+
+        while (fast != NULL) {
+                fast = fast-&gt;next;
+                if (fast != NULL) {
+                        slow = slow-&gt;next;
+                        fast = fast-&gt;next;
+                }
+        }
+
+        *frontRef = source;
+        *backRef = slow-&gt;next;
+        slow-&gt;next = NULL;
+}
+void MergeSort(Node** headRef) {
+        Node* head = *headRef;
+        Node* a;
+        Node* b;
+
+        if ((head == NULL) || (head-&gt;next == NULL)) {
+                return;
+        }
+
+        FrontBackSplit(head, &a, &b);
+
+        MergeSort(&a);
+        MergeSort(&b);
+
+        *headRef = SortedMerge(a, b);
+}
+void push(Node** head, int data)
+{
+    Node* newNode = new Node;
+    newNode-&gt;next = (*head);
+    newNode-&gt;data = data;
+    (*head) = newNode;
+}
+Function to Print LL
+void printList(Node* head)
+{
+    while (head != NULL)
+    {
+        cout &lt;&lt; head-&gt;data;
+        if (head-&gt;next != NULL)
+            cout &lt;&lt; " -&gt; ";
+        head = head-&gt;next;
+    }
+    cout&lt;&lt;endl;
+}
+int main(){
+
+        Node* head = NULL;
+        int t,n,temp;
+        cin &gt;&gt; t;
+        cin &gt;&gt; n;
+        for(int i = 0; i &lt; n; i++){
+                cin &gt;&gt; temp;
+                    push(&head, temp);
+        }
+
+        sortList(&head);
+        //	MergeSort(&head);
+        /*Uncomment MergeSort() to use Naive Approach*/
+
+        printList(head);
+        return 0;
+}
+
+</code></pre>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

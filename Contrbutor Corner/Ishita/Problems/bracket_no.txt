@@ -1,0 +1,22 @@
+Documentation
+Problem link : https://practice.geeksforgeeks.org/problems/print-bracket-number/0
+Asked in: Flipkart
+Problem : Given an expression exp of length n consisting of some brackets. The task is to print the bracket numbers when the expression is being parsed.
+ Input: The first line contains an integer T, the number of test cases. For each test case, there is a string exp containing the expression.
+Output: For each test case, the output is the bracket numbers of the expression.
+Constraints:
+1<=T<=100
+1<=S<=100
+Approach: Take a count variable ,initialize it to 1 if there is a opening bracket add the count to a vector array A and push count ++ to a stack st and if there is a closing bracket add the top of the stack to the vector array A and pop the element from the stack. At last print the A.
+Pseudocode:   count=1;
+	for(i=0 to s.length()){  
+		if(s[i]=(){ //opening bracket
+			a.push_back(count)
+			st.push(count++)
+		}
+		else if(s[i]=)){ //closing bracket
+			a.push_back(st.top())
+			st.pop()
+		}
+	}
+	print(a)

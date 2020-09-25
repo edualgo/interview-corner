@@ -1,0 +1,6 @@
+check if the right node is there if yes then assign function to convert the right node into DLL to the head
+if its head the left node is root
+and right node is head
+if the root has left node then assign function to convert the left node into DLL to the head
+else head is the root
+the function returns the head

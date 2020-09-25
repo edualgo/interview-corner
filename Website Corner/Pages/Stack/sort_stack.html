@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href= "https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">Stack</a></li>
+          <li class="breadcrumb-item active">Sort a stack </li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Sort a stack </h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a>
+    <img src="https://img.shields.io/badge/-Amazon-blue" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Goldman Sachs-lightgreen" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-IBM-olive" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Intuit-purple" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Kuliza- aqua" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Yahoo-brown" height="45">&nbsp;&nbsp;
+    
+  </a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                         
+                        A stack is given. Sort the stack such that the top of the stack has the greatest element.<br /><br />
+
+                        <b>Input Format</b><br />
+            
+                        10 2 45 3 7 <br /><br />
+
+                        <b>Output Format</b><br />
+                        45 10 7 3 2 
+                         
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Approach : </b>
+                          <p>
+                            1.Create two stack ( s1 , s2 ) and a temporary variable (temp)<br>
+                            2.The original stack (s1) should be greater than 0<br>
+                            3.Assign temp to the top element of the original stack , then push temp value into the another stack s2.<br>
+                            4.Now, again assign temp to the next top element of the original stack<br>
+                            5.Check if the temp value is greater than the s2<br>
+                            6.then push the temp value to original stack s1<br>
+                            7.Else push the temp value to s2<br>
+                            8.Return s2<br>
+<br>  
+                          </p>
+                          <h6>Python Code</h6>
+                          <pre><code class="language-python">
+def sorted(s):
+    s2 = createStack() 
+    while(isEmpty(s) == False): 
+        # pop out the first element 
+        temp = top(s) 
+        pop(s)
+
+     # while temporary stack is not 
+     # empty and top of stack is 
+     # greater than temp 
+     while(isEmpty(s2) == False and
+        int(top(s2)) < int(temp)): 
+                                      
+        # pop from temporary stack and 
+        # push it to the input stack 
+        push(s,top(s2)) 
+        pop(s2) 
+                          
+    # push temp in tempory of stack 
+    push(s2,temp) 
+                              
+    return s2 
+                        
+def createStack(): 
+    s = [] 
+    return s 
+                          
+# Function to check if  
+# the stack is empty 
+def isEmpty( s ): 
+    return len(s) == 0
+                          
+# Function to push an  
+# item to stack
+def push( s, item ): 
+    s.append( item ) 
+                          
+# Function to get top  
+# item of stack 
+def top( s ): 
+    a = len(s) 
+    return s[a-1] 
+                          
+# Function to pop an  
+# item from stack 
+def pop( s ): 
+                          
+    # If stack is empty 
+    # then error 
+    if(isEmpty( s )): 
+        print("Stack Underflow ") 
+        exit(1) 
+                          
+    return s.pop() 
+                          
+# Function to print the stack 
+def display(s): 
+    for i in range(len(s)-1, -1, -1): 
+        print(s[i], end = ' ') 
+    print()
+                        
+                        
+# Driver's Code 
+s = createStack() 
+push( s, str(4) ) 
+push( s, str(7) ) 
+push( s, str(10) ) 
+push( s, str(9) ) 
+push( s, str(1) ) 
+push( s, str(11) ) 
+  
+print("Sorted elements are: ") 
+sort_st = sorted ( s ) 
+print(sort_st) 
+   </code></pre>
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>.
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>

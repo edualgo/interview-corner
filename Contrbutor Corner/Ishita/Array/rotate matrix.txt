@@ -1,0 +1,24 @@
+DOCUMENTATION
+Question link : https://www.interviewbit.com/problems/rotate-matrix/
+Asked in : Google , Facebook, Amazon
+You are given an n x n 2D matrix representing an image.
+Rotate the image by 90 degrees (clockwise).
+Example: If the array is
+[
+    [1, 2],
+    [3, 4]
+]    Then the rotated array becomes:
+[
+    [3, 1],
+    [4, 2]
+]
+Approach - As we have to rotate the matrix image by 90. We can change the traversal of the matrix . If we print the column first from downward to upward direction then  then the rotated array will be printed .
+Time and Space Complexity : 
+Time - O(n^2)
+Space - O(n)
+Pseudocode :
+for(j=0 to n)
+	for(i=n-1 to 0)
+		print(a[i][j])
+
+

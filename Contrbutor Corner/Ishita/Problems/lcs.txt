@@ -1,0 +1,40 @@
+DOCUMENTATION
+Question link:https://practice.geeksforgeeks.org/problems/longest-common-substring/0
+Asked in: Amazon,Microsoft,Morgan Stanley
+Problem:Given two strings X and Y. The task is to find the length of the longest common substring.
+Input:
+First line of the input contains number of test cases T. Each test case consist of three lines, first of which contains 2 space separated integers N and M denoting the size of string X and Y strings respectively. The next two lines contains the string X and Y.
+Output:
+For each test case print the length of longest  common substring of the two strings .
+Example: Input:
+2
+6 6
+ABCDGH
+ACDGHR
+3 2
+ABC
+AC
+Output:
+4
+1
+Time and Space complexity:
+time complexity:O(n^2)
+space complexity: O(n+m)
+Approach: Create a 2d array with size n+1 and m+1.Fill the first row and column as 0.Use two for loops , First for loop starts from 1 and ends at equal to n. second for loop starts from 1 and ends at equal to m.Inside the loops , Compare s1[i-1]and s2[j-1]. One index less because we are ending at equal to string lengths m and n.If the characters are equal then str[i][j] =str[i-1][j-1] +1 . If the chars are not equal then str[i][j]=0.Use a variable to store the max value encountered and return this value.the diagonal positions indicate consecutive characters.
+Pseudocode:   for(int i=1to n)
+           for(int j=1to m)
+           {
+               if(s1[i-1]==s2[j-1])           
+               str[i][j]=str[i-1][j-1]+1
+               else
+               str[i][j]=0
+           } int str1=0 
+      for(int i=1to n)
+      {
+           for(int j=1to m)
+            {   
+		if(str1<str[i][j])
+                str1=str[i][j]
+            }
+      }
+      print (str1)

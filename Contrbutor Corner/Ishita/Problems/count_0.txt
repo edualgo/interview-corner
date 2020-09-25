@@ -1,0 +1,24 @@
+Documentation
+Problem link : https://practice.geeksforgeeks.org/problems/count-the-zeros/0
+Asked in: Amazon, Yahoo
+Problem :Given an array of size N consisting of only 0's and 1's ,which is sorted in such a manner that all the 1's are placed first and then they are followed by all the 0's. You have to find  the count of all the 0's.
+ Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. 
+The first line of each test case contains an integer N, where N is the size of the array A[ ].
+The second line of each test case contains N space separated integers of all 1's follwed by all the 0's, denoting elements of the array A[ ].
+Output:
+Print out the number of 0's in the array. 
+Time and Space complexity:
+time: O(n)
+space: O(n)
+Approach: Take count =0 and as the array is sorted start traversing the array from backwards and  count the no of 0's and if 1 is found break the loop and print count. 
+Pseudocode:for(i=n-1 to 0)
+		{
+			if(a[i]==0)
+				c++;
+			else
+		    {
+		    	break;
+			}
+		}
+             print c

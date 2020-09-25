@@ -1,0 +1,27 @@
+DOCUMENTATION
+Problem link:https://www.geeksforgeeks.org/print-subsequences-string-iterative-method/
+Asked in: Goldman Sachs
+Problem:Given a string s, print all possible subsequences of the given string 
+Input : abc
+Output : a, b, c, ab, ac, bc, abc
+
+Input : aab
+Output : a, b, aa, ab, aab
+Approach: Each character in a string will have 2 options wheather it is included in a subsets or not. So the total no of subsets will be 2^n-1 where n is the no of characters of a string . Now make all possible binary combinations from 0 to 2^n-1.Start from left (MSB) to right (LSB) of binary representation and append characters from input string which corresponds to bit value 1 in binary representation to Final subsequence string sub.
+Example:
+001 => abc . Only c corresponds to bit 1. So, subsequence = c.
+101 => abc . a and c corresponds to bit 1. So, subsequence = ac.
+Pseudocode-   void filter_chars(int n,char a[])
+	int j=0;
+	while(n>0)
+	{
+last_bit=(n&1)
+		if(last_bit==1)
+		print(a[j]);
+		
+		j++;
+		n=n>>1
+	}
+void print_subsets(char a[])
+    for(int i=0 to (1<<n))
+		filter_chars(i,a)
