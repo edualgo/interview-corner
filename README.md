@@ -29,7 +29,15 @@ We will be using CPP and Python to code out the algorithms and will be using HTM
     1) git init -initializes the git repository from the GitHub. 
     2) git clone -Clone the repository to your local machine
       (git clone https://github.com/Abhijit2505/Algorithmic-Treasure-Original.git)
-```    
+```   
+
+## Participated Opensource Programs
+
+This project was previously praticipated in the following opensource programs,
+
+#### 1) BWLU(Build With LetsUpgrade) [July,20 - Sept,20]
+
+<img src ="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/blob/master/Assets/letsupgrade_logo.png" height = "150">
 
 ## Contributors ✨
 
