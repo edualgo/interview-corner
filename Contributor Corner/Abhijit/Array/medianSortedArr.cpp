@@ -1,10 +1,5 @@
-# include <iostream>
-# include <vector>
-# include <ctime>
-# include <cstdlib>
-# include <cmath>
-# include <algorithm>
-
+//header file to includes all standard library
+#include <bits/stdc++.h>
 using namespace std;
 
 
