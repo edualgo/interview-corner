@@ -692,7 +692,7 @@ select {
 }
 
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #f5f5f5;
+  background-color:  #808080;
 }
 
 .screenshot-holder {
@@ -1289,7 +1289,7 @@ select {
 
 .cards-section {
   padding: 60px 0;
-  background: #f9f9fb;
+  background: #f5f5f5;
 }
 
 .cards-section .title {
@@ -1352,18 +1352,21 @@ select {
 
 .cards-section .item-inner {
   padding: 45px 30px;
-  background: #fff;
+  background: #f5f5f5;
   position: relative;
   border: 1px solid #f0f0f0;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  border-radius: 20px;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
   height: 100%;
+  background: #f5f5f5;
+  box-shadow:  -7px -7px 15px #D3D3D3,
+                7px 7px 15px #D3D3D3;
 }
 
 .cards-section .item-inner .link {
@@ -1376,7 +1379,7 @@ select {
 }
 
 .cards-section .item-inner:hover {
-  background: #f5f5f5;
+  transform: scale(0.98);
 }
 
 .cards-section .item-primary .item-inner {
@@ -1392,7 +1395,7 @@ select {
 }
 
 .cards-section .item-green .item-inner {
-  border-top: 3px solid red;
+  border-top: 1px solid white;
 }
 
 .cards-section .item-green .item-inner:hover .title {
@@ -1404,7 +1407,7 @@ select {
 }
 
 .cards-section .item-blue .item-inner {
-  border-top: 3px solid blue;
+  border-top: 1px solid white;
 }
 
 .cards-section .item-blue .item-inner:hover .title {
