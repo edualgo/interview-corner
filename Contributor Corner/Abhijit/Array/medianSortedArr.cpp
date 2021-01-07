@@ -1,4 +1,4 @@
-//header file to includes all standard library
+//header file to include all standard library
 #include <bits/stdc++.h>
 using namespace std;
 
