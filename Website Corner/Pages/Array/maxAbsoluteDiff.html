@@ -42,7 +42,7 @@
     <div class="doc-wrapper">
       <div class="container">
         <div id="doc-header" class="doc-header text-center">
-          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Add One To Number</h1>
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i> Maximum Absolute Difference</h1>
           <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
         </div>
         <div class="doc-body row">
@@ -52,7 +52,7 @@
                 <div id="html" class="section-block">
 <p>
   <a><img src="https://img.shields.io/badge/-Microsoft-blue" height="45">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-Interviewbit-violet" height="35">
-    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-brightgreen" height="35"></a>
+    &nbsp;&nbsp;<img src="https://img.shields.io/badge/-Python-brightgreen" height="35">&nbsp;&nbsp;<img src="https://img.shields.io/badge/-CPP-red" height="35"></a>
 
 
 </p>
@@ -84,24 +84,57 @@ f(2, 3) = f(3, 2) = |3 - (-1)| + |2 - 3| = 5<br />
                           <p>
                             f(i, j) = |A[i] - A[j]| + |i - j| can be written in 4 ways (Since we are looking at max value, we don’t even care if the value becomes negative as long as we are also covering the max value in some way).<br />
 
-(A[i] + i) - (A[j] + j) -(A[i] - i) + (A[j] - j) (A[i] - i) - (A[j] - j) (-A[i] - i) + (A[j] + j) = -(A[i] + i) + (A[j] + j)<br />
+<br />&nbsp; Case 1 : (A[i] + i) - (A[j] + j) <br />&nbsp; Case 2 : -(A[i] - i) + (A[j] - j) <br />&nbsp; Case 3 : (A[i] - i) - (A[j] - j) <br />&nbsp; Case 4 : (-A[i] - i) + (A[j] + j) = -(A[i] + i) + (A[j] + j)<br /><br />
 
 Note that case 1 and 4 are equivalent and so are case 2 and 3.<br />
 
-We can construct two arrays with values: A[i] + i and A[i] - i. Then, for above 2 cases, we find the maximum value possible. For that, we just have to store minimum and maximum values of expressions A[i] + i and A[i] - i for all i.<br />
+We can construct two arrays with values: A[i] + i and A[i] - i. Then, for above 2 distinct cases, we find the maximum value possible. For that, we just have to store minimum and maximum values of expressions A[i] + i and A[i] - i for all i.<br />
                           </p>
                         </div>
                       </div>
                     </div>
+
+                    <h6>C++ Code</h6>
+                    <pre><code class="language-cpp">
+// Method to return the required Maximum absolute difference
+int maxArr(vector&lt;int> a) 
+{
+    // length of given vector
+    int n = a.size();
+
+    // declaring two vectors to store A[i] + i and A[i] - i
+    vector&lt;int> a1(n), a2(n);
+
+    // storing the required values in a1 and a2
+    for(int i=0; i&lt;n; i++) {
+        a1[i] = a[i] + i;
+        a2[i] = a[i] - i;
+    }
+
+    // max and min values of a1 (A[i] + i)
+    int max_of_a1 = *max_element(a1.begin(), a1.end());
+    int min_of_a1 = *min_element(a1.begin(), a1.end());
+
+    // max and min values of a2 (A[i] - i)
+    int max_of_a2 = *max_element(a2.begin(), a2.end());
+    int min_of_a2 = *min_element(a2.begin(), a2.end());
+
+    // return the maximum value possible
+    return max(max_of_a1 - min_of_a1, max_of_a2- min_of_a2);
+}
+
+                    </code></pre><br /><br />
+
+
                     <h6>Python Code</h6>
                     <pre><code class="language-python">
 class Solution:
 
     def maxArr(self, a):
         n = len(a)
-        ap = [a[i] + i in range(n)]
-        am = [a[i] - i for i in range(n)]
-        return max(max(ap)-min(ap), max(am)-min(am))</code></pre><br /><br />
+        a1 = [a[i] + i for i in range(n)]
+        a2 = [a[i] - i for i in range(n)]
+        return max(max(a1)-min(a1), max(a2)-min(a2))</code></pre><br /><br />
                 </div>
             </div>
           </div>
