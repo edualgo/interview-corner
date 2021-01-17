@@ -60,6 +60,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/MercyRabecal"><img src="https://avatars0.githubusercontent.com/u/68532199?v=4" width="100px;" alt=""/><br /><sub><b>Mercy Rabecal. P</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=MercyRabecal" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/pg00019"><img src="https://avatars2.githubusercontent.com/u/58894967?v=4" width="100px;" alt=""/><br /><sub><b>Priya Gupta</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=pg00019" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Rsr0"><img src="https://avatars2.githubusercontent.com/u/51770809?v=4" width="100px;" alt=""/><br /><sub><b>Sahil Rana</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=Rsr0" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/abhijeet007rocks8"><img src="https://avatars3.githubusercontent.com/u/64676594?s=460&u=067281c880614579839aba8098a57dc5740c9954&v=4" width="100px;" alt=""/><br /><sub><b>Abhijeet Chatterjee</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=abhijeet007rocks8" >💻</a></td>    
   </tr>
 </table>
 
