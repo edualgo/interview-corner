@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Algorithmic Treasure</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <script defer src="../../assets/fontawesome/js/all.js"></script>
+  <link rel="stylesheet" href="../../assets/plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../assets/plugins/prism/prism.css">
+  <link rel="stylesheet" href="../../assets/plugins/elegant_font/css/style.css">
+  <link id="theme-style" rel="stylesheet" href="../../assets/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Recursive&display=swap" rel="stylesheet">
+</head>
+
+<body class="body-green">
+  <div class="page-wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <div class="branding">
+          <h1 class="logo">
+            <a href="../../index.html">
+              <span class="text-highlight">Algorithmic </span><span class="text-bold">Treasure</span>
+            </a>
+          </h1>
+
+        </div>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
+          <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
+          <li class="breadcrumb-item active">Maximum Subarray Sum</li>
+        </ol>
+      </div>
+    </header>
+    <div class="doc-wrapper">
+      <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>Maximum Subarray Sum</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 17 Jan, 2021</div>
+        </div>
+        <div class="doc-body row">
+          <div class="doc-content col-md-9 col-12 order-1">
+            <div class="content-inner">
+              <section id="code-section" class="doc-section">
+                <div id="html" class="section-block">
+<p>
+  <a>
+    &nbsp;<img src="https://img.shields.io/badge/-Amazon-magenta" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Google-orange" height="45">&nbsp;&nbsp;
+    <img src="https://img.shields.io/badge/-Python-blue" height="45">&nbsp;
+    &nbsp;<img src="https://img.shields.io/badge/-Kandane's Algorithm-brightgreen" height="35"></a>
+
+
+</p>
+                    <div class="callout-block callout-success">
+                      <div class="icon-holder">
+                        <i class="fas fa-question"></i>
+                      </div>
+                      <div class="content">
+                        <h4 class="callout-title">Problem Statment</h4>
+                        <p>Given an integer array <b>A</b> of <b>N</b> elements.
+                           You need to find the maximum sum possible of its subarray.</p><br /><br />
+
+                          <u>Example 1</u>:<br /><br />
+
+                          Input<br />
+                          3<br />
+                          7<br />
+                          1 2 3 4 -10 9 4<br />
+                          5<br />
+                          1 2 3 4 5<br />
+                          7<br />
+                          5 4 -10 -5 1 5 6<br /><br />
+                          Output:<br />
+                          13<br />
+                          15<br />
+                          12<br /><br />
+                      </div>
+                    </div>
+                    <div class="code-block">
+                      <div id="python" class="section-block">
+                        <div class="code-block">
+                          <b>Method:</b>
+                          <p>Brute Force</p>
+                          <p>One way to solve this problem is to get all the subarrays of the array
+                            and sum them individually and print the highest sum amount. 
+                          </p>
+                          <p>Let's look at an Optimised approach</p>
+                          <p>The idea is to calculate,for each array position , the maximum sum 
+                            of subarray at that position.
+                          </p>
+                          <p>
+                          <ul>
+                            <li>
+                                Add each integer of the array to a variable "sum"
+                            </li>
+                            <li>
+                                Update sum with the max value between sum and array[i] + sum 
+                            </li>
+                            <li>
+                                Keep an integer "best" which will store the max value of the sum
+                            </li>
+                          </ul>
+                          </p>
+                          <p>This method solves the problem in O(n)</p>
+                          
+                          <h6>Python Code</h6>
+                          <pre><code class="language-python">
+test=int(input())
+for i in range(test):
+    size=int(input())
+    arr=list(map(int,input().split()))
+    best=0
+    sum=0
+    for j in range(size):
+        sum=max(arr[j],arr[j]+sum)
+        best=max(sum,best)
+    print(best)
+</code></pre>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <footer class="footer text-center">
+    Copyright 2020 @<a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a>. Package Designed by <a href="https://github.com/Abhijit2505" target="_blank">Abhijit Tripathy</a> for python enthusiasts
+    [Theme Designed by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a>]
+  </footer>
+
+  <script type="text/javascript" src="../../assets/plugins/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/prism/prism.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+  <script type="text/javascript" src="../../assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
+  <script type="text/javascript" src="../../assets/js/main.js"></script>
+
+</body>
+
+</html>
