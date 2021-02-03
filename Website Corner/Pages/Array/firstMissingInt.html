@@ -35,15 +35,15 @@
           <li class="breadcrumb-item"><a href="../../index.html">Home</a></li>
           <li class="breadcrumb-item"><a href="../start.html">Documentation</a></li>
           <li class="breadcrumb-item"><a href="array.html">One Dimensional Array</a></li>
-          <li class="breadcrumb-item active">First Missing Integer</li>
+          <li class="breadcrumb-item active">First Missing Non Negative Integer</li>
         </ol>
       </div>
     </header>
     <div class="doc-wrapper">
       <div class="container">
         <div id="doc-header" class="doc-header text-center">
-          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>First Missing Integer</h1>
-          <div class="meta"><i class="far fa-clock"></i> Last updated: 29th Aug, 2020</div>
+          <h1 class="doc-title"><i class="icon fas fa-file-contract"></i>First Missing Non Negative Integer</h1>
+          <div class="meta"><i class="far fa-clock"></i> Last updated: 17th Jan, 2021</div>
         </div>
         <div class="doc-body row">
           <div class="doc-content col-md-9 col-12 order-1">
@@ -65,7 +65,7 @@
                       <div class="content">
                         <h4 class="callout-title">Problem Statment</h4>
                         <p>Given an unsorted integer array, find the first missing
-                          positive integer.<br /><br />
+                          non negative integer.<br /><br />
 
                           <u>Example 1</u>:<br /><br />
 
@@ -76,28 +76,17 @@
                     <div class="code-block">
                       <div id="python" class="section-block">
                         <div class="code-block">
-                          <b>Approach:</b>
+                          <b>Approach 1:</b>
                           <p>
-                            Sort the vector array and take a key variable as 1.
-                            If the array element is greater than key then the
-                            first missing positive integer is key and if the the
-                            array element is equal to key then increment the key
-                             by 1 and find the first missing positive integer.<br /><br />
-
+                            The bruteforce approach for such a problem involves, sorting the given array.<br>
+                            After sorting, iterate over the array of length 'n'. For each i:0->n-1, if array[i]!=i,
+                            then the current value of i, is the first missing non negative integer and can be returned.
+                            If the array is iterated and for all valid i(0->n-1), array[i]=i, the first missing non negative 
+                            integer is n.<br /><br />
 Time and Space Complexity : <br />
 
-Time - O(n)<br />
-Space - O(n)<br /><br />
-
-Pseudocode  :<br />
-	sort(a)<br />
-	for(i=0 to n)<br />
-		&nbsp;&nbsp;&nbsp;if(a[i]>0)<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;if(a[i]>key)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key<br />
-			&nbsp;&nbsp;&nbsp;&nbsp;else if(a[i]==key)<br />
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key++<br />
-  <br /><br / />
+Time - O(nlogn)<br />
+Space - O(1)<br /><br />
                           </p>
                         </div>
                       </div>
@@ -105,20 +94,52 @@ Pseudocode  :<br />
                     <h6>C++ Code</h6>
                     <pre><code class="language-cpp">void missing_integer(vector&lt;int>a)
 {
-	int key=1,k;
 	sort(a.begin(),a.end());
-	for(int i=0;i&lt;a.size();i++)
-	{
-		if(a[i]>0)
-		{
-			if(a[i]>key)
-			  k=key;
-			else if(a[i]==key)
-				k=key++;
+	for(int i=0;i&lt;a.size();i++){
+    if(a[i]!=i){
+      cout&lt;&lt;i&lt;&lt;'\n';
+      return;
+      }
+    }
+	cout&lt;&lt; a.size()&lt;&lt;'\n';
+}</code></pre><br /><br />
 
-		}
-	}
-	cout&lt;&lt;k;
+<div class="code-block">
+  <div id="python" class="section-block">
+    <div class="code-block">
+      <b>Approach 2:</b>
+      <p>
+       This solution can be further optimised. <br>
+       The basic idea is for any n non negative numbers, the first missing non negative number must be within [0,n].
+       The reasoning is similar to putting k balls into k+1 bins, there must be a bin empty, the empty bin can be viewed as the missing number.<br /><br />
+Time and Space Complexity : <br />
+
+Time - O(n)<br />
+Space - O(1)<br /><br />
+
+      </p>
+    </div>
+  </div>
+</div>
+<h6>C++ Code</h6>
+<pre><code class="language-cpp">void missing_integer(vector&lt;int>a)
+{
+  int n = a.size();
+  for(int i=0;i&lt;n;i++){
+    while(a[i]&gt;=0 && a[i]&lt;n && a[a[i]]!=a[i]){ 
+      //Elements in array can vary from 0 to n-1
+      //An array of size n has indixes varying from 0 to n-1 too
+      //Place element with value i, at index i
+      swap(a[i], a[a[i]]);
+      }
+  }
+  for(int i=0;i&lt;n;i++){
+    if(a[i]!=i){
+      cout&lt;&lt;i&lt;&lt;'\n';
+      return;
+    }
+  }
+  cout&lt;&lt; a.size()&lt;&lt;'\n';
 }</code></pre><br /><br />
                 </div>
             </div>
