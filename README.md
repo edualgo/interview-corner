@@ -1,6 +1,6 @@
 # **Algorithmic Treasure**
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-24-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-25-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 <img alt="Github All Contributors" src="https://img.shields.io/github/contributors/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src="https://img.shields.io/github/last-commit/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src="https://img.shields.io/github/languages/code-size/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src ="https://img.shields.io/github/repo-size/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src = "https://img.shields.io/github/issues-raw/letsupgrade/algorithmic-treasure?style=for-the-badge"><img src = "https://img.shields.io/github/issues-closed-raw/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src = "https://img.shields.io/github/issues-pr-raw/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src = "https://img.shields.io/github/issues-pr-closed-raw/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src = "https://img.shields.io/github/languages/count/letsupgrade/algorithmic-treasure?style=for-the-badge">&nbsp;<img src ="https://img.shields.io/github/license/letsupgrade/algorithmic-treasure?style=for-the-badge">
@@ -78,6 +78,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://www.linkedin.com/in/harsh-ghodkar/"><img src="https://avatars.githubusercontent.com/u/71517788?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Harsh Ghodkar</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=Saviour1001" title="Code">💻</a></td>
     <td align="center"><a href="http://linkedin.com/in/japneet-kaur-b-400b60194/"><img src="https://avatars.githubusercontent.com/u/56752427?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Japneet Kaur Bhatia</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=japneetbhatia" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/muskan-888"><img src="https://avatars.githubusercontent.com/u/52909693?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Muskan</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=muskan-888" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/anjali-goyal06"><img src="https://avatars.githubusercontent.com/u/65500739?v=4?s=100" width="100px;" alt=""/><br /><sub><b>anjali-goyal06</b></sub></a><br /><a href="https://github.com/Abhijit2505/Algorithmic-Treasure-Original/commits?author=anjali-goyal06" title="Code">💻</a></td>
   </tr>
 </table>
 
